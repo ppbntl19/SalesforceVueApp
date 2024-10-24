@@ -1,18 +1,26 @@
 <script>
 export default {
-  props: {
-    quoteLineItems: Array
+    props: {
+        quoteLineItems: Array
     }
 }
 
 </script>
-<template>  
+<template>
     <div>
-    <h6>Quote Line Items</h6>
-    <div v-for="qli in quoteLineItems" :key="qli.Id">
-        <p>{{ qli.Name }}: {{ qli.Quantity }} @ {{ qli.UnitPrice }}</p>
+        <h5>Quotes Line Item</h5>
+        <div class="slds-card">
+            <div class="slds-card__body">
+                <ul class="slds-list_dotted">
+                    <li v-for="qli in quoteLineItems" :key="qli.Id">
+                        <div class="slds-box slds-theme_default slds-m-bottom_small">
+                            <p>{{ qli.Product2.Name }}: {{ qli.Quantity }} @ {{ qli.Subtotal }}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
 </template>
 
 

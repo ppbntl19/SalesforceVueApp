@@ -2,6 +2,7 @@
 
 import { LightningElement, api } from 'lwc';
 import createVueApp from "c/vue";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
     
     export default class vueAppContainer extends LightningElement {
         @api recordId;
@@ -47,7 +48,13 @@ import createVueApp from "c/vue";
         }
 
         // Event handler for receiving the account Id from Vue
-        handleSendAccount(event) {
+        handleRefresh(event) {
+            const evt = new ShowToastEvent({
+                title: 'Event From Child View App',
+                message: 'This Button allow commnunication between parent and child Vue  app.',
+                mode: 'dismissable'
+              });
+              this.dispatchEvent(evt);
             event.stopPropagation();
             this.eventValue = event.detail.accountId;
         }
